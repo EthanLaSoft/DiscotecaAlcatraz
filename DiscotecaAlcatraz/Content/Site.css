@@ -1,0 +1,88 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+
+    body {
+        background-color: #101019;
+        color: #f4f4fa;
+    }
+
+    .alcatraz-header {
+        background-color: #181725;
+        border: 1px solid #ed168b;
+        border-radius: 8px;
+        padding: 28px 20px;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+        .alcatraz-header h1 {
+            color: #ff48a8;
+            font-weight: bold;
+        }
+
+        .alcatraz-header p {
+            color: #bfc5d7;
+        }
+
+    .alcatraz-section {
+        background-color: #191927;
+        border: 1px solid #343449;
+        border-left: 4px solid #20dff4;
+        border-radius: 7px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+        .alcatraz-section h2 {
+            color: #20dff4;
+        }
+
+    .table {
+        background-color: #191927;
+        color: #f4f4fa;
+    }
+
+        .table > thead > tr > th {
+            color: #ff48a8;
+            border-bottom: 2px solid #ed168b;
+        }
+
+        .table > tbody > tr > td {
+            border-top: 1px solid #343449;
+        }
+
+    .btn-neon {
+        background-color: #ed168b;
+        border-color: #ed168b;
+        color: white;
+        margin: 5px;
+    }
+
+    .btn-neon-alt {
+        background-color: #20dff4;
+        border-color: #20dff4;
+        color: #101019;
+        margin: 5px;
+    }
+
+    a {
+        color: #20dff4;
+    }
+}

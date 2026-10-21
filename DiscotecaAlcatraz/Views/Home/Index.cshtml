@@ -1,0 +1,116 @@
+﻿@model DiscotecaAlcatraz.Models.InicioViewModel
+
+@{
+    ViewBag.Title = "Discoteca Alcatraz";
+}
+
+<div class="alcatraz-header">
+    <h1>DISCOTECA ALCATRAZ</h1>
+    <p>Panel de administración de eventos y reservas</p>
+
+    @Html.ActionLink(
+        "Nuevo evento", "Create", "Eventoes",
+        null, new { @class = "btn btn-neon" })
+
+    @Html.ActionLink(
+        "Nueva reserva", "Create", "Reservas",
+        null, new { @class = "btn btn-neon-alt" })
+</div>
+
+<section class="alcatraz-section">
+    <h2>1. Eventos</h2>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Género</th>
+                    <th>Fecha</th>
+                    <th>Aforo</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var evento in Model.Eventos)
+                {
+                    <tr>
+                        <td>@evento.Nombre</td>
+                        <td>@evento.Genero</td>
+                        <td>@evento.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@evento.Aforo</td>
+                        <td>@evento.Estado</td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", "Eventoes",
+                                new { id = evento.Id }, null)
+                            |
+                            @Html.ActionLink("Detalles", "Details", "Eventoes",
+                                new { id = evento.Id }, null)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (!Model.Eventos.Any())
+    {
+        <p>Todavía no hay eventos registrados.</p>
+    }
+
+    @Html.ActionLink(
+        "Administrar eventos", "Index", "Eventoes",
+        null, new { @class = "btn btn-default" })
+</section>
+
+<section class="alcatraz-section">
+    <h2>2. Reservas</h2>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Evento</th>
+                    <th>Plan</th>
+                    <th>Personas</th>
+                    <th>Valor total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reserva in Model.Reservas)
+                {
+                    <tr>
+                        <td>@reserva.NombreCliente</td>
+                        <td>
+                            @(reserva.Evento == null
+                            ? "Sin evento"
+                            : reserva.Evento.Nombre)
+                        </td>
+                        <td>@reserva.TipoPlan</td>
+                        <td>@reserva.NumeroPersonas</td>
+                        <td>@reserva.ValorTotal.ToString("C2")</td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", "Reservas",
+                                new { id = reserva.Id }, null)
+                            |
+                            @Html.ActionLink("Detalles", "Details", "Reservas",
+                                new { id = reserva.Id }, null)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (!Model.Reservas.Any())
+    {
+        <p>Todavía no hay reservas registradas.</p>
+    }
+
+    @Html.ActionLink(
+        "Administrar reservas", "Index", "Reservas",
+        null, new { @class = "btn btn-default" })
+</section>
